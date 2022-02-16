@@ -1,0 +1,61 @@
+package net.codejava;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		
+		int[] nums1 = new int[] {4, 9, 5};
+		
+		int[] nums2 = new int[] {9,4,9,8,4};
+		
+		int[] res = intersect(nums1, nums2);
+
+	}
+	public static int[] intersect(int[] nums1, int[] nums2) {
+	       
+        int i=0, j=0;
+        
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        List<Integer> result = new ArrayList<>();
+        
+        while (i < nums1.length && j < nums2.length)
+        {
+            if(nums1[i] == nums2[j])
+            {
+                result.add(nums1[i]);
+                i++;
+                j++;
+                
+            }
+            else if(nums1[i] < nums2[j])
+            {
+                i++;
+            }
+            else
+            {
+                j++;
+            }
+            
+        }
+        return listToArray(result);
+        
+    }
+    
+    private static int[] listToArray(List<Integer> list) {
+        int[] result = new int[list.size()];
+         
+        for (int i = 0; i < list.size(); i++) {
+            result[i] = list.get(i);
+        }
+         
+        return result;
+    }
+
+}
