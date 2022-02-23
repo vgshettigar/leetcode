@@ -1,0 +1,31 @@
+package net.codejava;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		// System.out.println("Hello World");
+		// int[] nums1 = new int[] { 9, 9, 9, 9, 9 };
+		// int[] nums2 = new int[] {9,4,9,8,4};
+
+		String s = "ab_a";
+
+		boolean res = isPalindrome(s);
+		System.out.println(res);
+	}
+
+	public static boolean isPalindrome(String s) {
+
+		s = s.replaceAll("[^a-zA-Z0-9]", "");
+		s = s.toLowerCase();
+
+		int i = 0, j = s.length() - 1;
+		while (i < j) {
+			if (s.charAt(i) == s.charAt(j)) {
+				i++;
+				j--;
+			} else
+				return false;
+		}
+		return true;
+	}
+}
