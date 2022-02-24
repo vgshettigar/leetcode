@@ -1,0 +1,58 @@
+package net.codejava;
+
+public class ListNode {
+	int val;
+	ListNode next;
+
+	ListNode() {
+	}
+
+	ListNode(int val) {
+		this.val = val;
+	}
+
+	ListNode(int val, ListNode next) {
+		this.val = val;
+		this.next = next;
+	}
+}
+
+public class Solution {
+
+	public static void main(String[] args) {
+		// System.out.println("Hello World");
+		// int[] nums1 = new int[] { 9, 9, 9, 9, 9 };
+		// int[] nums2 = new int[] {9,4,9,8,4};
+
+		// String s = "ab_a";
+
+		// boolean res = isPalindrome(s);
+		// System.out.println(res);
+	}
+
+	public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+
+		ListNode dummy = new ListNode(-999);
+		ListNode head = dummy;
+
+		while (list1 != null && list2 != null) {
+			if (list1.val < list2.val) {
+				dummy.next = list1;
+				list1 = list1.next;
+			} else {
+				dummy.next = list2;
+				list2 = list2.next;
+			}
+			dummy = dummy.next;
+		}
+
+		if (list1 != null) {
+			dummy.next = list1;
+		} else {
+			dummy.next = list2;
+		}
+
+		return head.next;
+
+	}
+}
