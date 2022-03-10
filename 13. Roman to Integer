@@ -1,0 +1,43 @@
+package net.codejava;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution {
+
+	public static void main(String[] args) {
+
+		// int[] nums = new int[] { 3, 3 };
+		romanToInt("III");
+
+	}
+
+	public static int romanToInt(String s) {
+
+		Map<Character, Integer> mymap = new HashMap<>();
+
+		int res = 0;
+		mymap.put('I', 1);
+		mymap.put('V', 5);
+		mymap.put('X', 10);
+		mymap.put('L', 50);
+		mymap.put('C', 100);
+		mymap.put('D', 500);
+		mymap.put('M', 1000);
+		
+		int k = s.length();
+
+		res = mymap.get(s.charAt(k - 1));
+		for (int i = k - 2; i >= 0; i--) {
+
+			if (mymap.get(s.charAt(i)) >= mymap.get(s.charAt(i + 1))) {
+				res += mymap.get(s.charAt(i));
+			} else
+				res -= mymap.get(s.charAt(i));
+
+		}
+
+		return res;
+
+	}
+}
